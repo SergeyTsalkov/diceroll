@@ -27,6 +27,7 @@ define('LOG_DIR', realpath(BASE_DIR . '/logs'));
 init_writeable_dir('LOG_DIR', LOG_DIR);
 
 require_once BASE_DIR . '/vendor/autoload.php';
+require_once LIB_DIR . '/config.php';
 
 define('IS_DEVELOPMENT', substr_count(HOSTNAME, 'dev.') > 0);
 define('IS_PRODUCTION', !IS_DEVELOPMENT);
@@ -47,3 +48,4 @@ function init_writeable_dir(string $type, string $dir) {
   }
   if (!is_dir($dir) || !is_writable($dir)) throw new Exception("$type ($dir) is not accessible!");
 }
+

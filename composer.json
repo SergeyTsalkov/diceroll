@@ -1,10 +1,10 @@
 {
   "require": {
-    "psr/log": "1.*",
     "smarty/smarty": "3.*",
     "slim/slim": "3.*",
     "scssphp/scssphp": "@stable",
-    "monolog/monolog": "@stable"
+    "monolog/monolog": "@stable",
+    "guzzlehttp/guzzle": "^7.5"
   },
   "autoload": {
     "classmap": [
@@ -14,7 +14,13 @@
     ],
     "files": [
       "libs/common.php",
+      "libs/diceroll.php",
       "libs/logger.php"
     ]
+  },
+  "config": {
+    "platform": {
+      "php": "7.4.33"
+    }
   }
 }
