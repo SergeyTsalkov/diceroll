@@ -36,6 +36,7 @@ class MySlimApp extends \Slim\App {
     $this->add('TemplateVarMiddleware');
 
     $this->get('/', 'HomeController:Home')->setName('home');
+    $this->post('/roll', 'HomeController:Roll')->setName('roll');
     // $this->get('/scss/{filename:\w+\.s?css}', 'SCSSController:show');
   }
 }

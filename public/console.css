@@ -219,7 +219,7 @@ body, html, #root {
 }
 
 .Line .output:before {
-  background-image: url(/out.svg);
+  background-image: url(/assets/out.svg);
 }
 
 .Line .output.log:before {

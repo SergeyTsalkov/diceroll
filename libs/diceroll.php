@@ -17,7 +17,6 @@ function diceroll($string) {
 
   // get random numbers
   $random = random($need_random);
-  var_dump($random);
 
   // use random numbers to generate intermediate string and result
   $intermediate = [];
