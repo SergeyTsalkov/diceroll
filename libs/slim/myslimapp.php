@@ -37,6 +37,6 @@ class MySlimApp extends \Slim\App {
 
     $this->get('/', 'HomeController:Home')->setName('home');
     $this->post('/roll', 'HomeController:Roll')->setName('roll');
-    // $this->get('/scss/{filename:\w+\.s?css}', 'SCSSController:show');
+    $this->get('/scss/{filename:\w+\.s?css}', 'SCSSController:show');
   }
 }

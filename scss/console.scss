@@ -1,0 +1,108 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@keyframes spin{
+  0%{
+    -webkit-transform:rotate(0deg);
+    transform:rotate(0deg);
+  }
+  to{
+    -webkit-transform:rotate(1turn);
+    transform:rotate(1turn);
+  }
+}
+
+.spin {
+    -webkit-animation-name: fa-spin;
+    animation-name: spin;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+/* background dice image */
+img.background {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  width: 20%;
+  height: 20%;
+  opacity: 25%;
+}
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  line-height: 1.4rem;
+  font-family: "Menlo", consolas, monospace;
+}
+
+
+.line {
+  line-height: 1.2rem;
+  min-height: 1.2rem;
+  border-bottom: 1px solid #eee;
+  padding: 0.6rem;
+  padding-left: 1.4rem;
+
+  .subline + .subline {
+    padding-top: 0.6rem;
+  }
+
+  img {
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin-left: -1em;
+    margin-top: 3px;
+  }
+
+  form {
+    display: inline-block;
+  }
+
+  &.input {
+    background-color: #eee;
+  }
+
+  input[type=text] {
+    resize: none;
+    background: none;
+    font-family: "Menlo", consolas, monospace;
+    border: 0;
+    display: block;
+    width: 100%;
+    outline: none;
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
+
+body.theme-dark {
+  background: #282c34;
+
+  .line {
+    color: #abb2bf;
+    background: #282c34;
+    border-bottom: 1px solid rgb(84, 84, 84);
+  }
+
+  input[type=text] {
+    color: rgb(222, 222, 222);
+  }
+
+  em {
+    color: #c678dd;
+  }
+
+  a {
+    color: #c678dd;
+  }
+}
+

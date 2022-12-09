@@ -6,21 +6,19 @@
   <div tabindex="-1" class="App">
 
     <div class="console-container">
-      <div class="Line">
-        <div class="prompt output log">
-          <div class="type string bareString">
-            To roll dice, enter a formula like <strong>2d20+1d8+4</strong>
-            <br>To clear screen, type <b>/clear</b>
-            <br>We use true randomness from random.org
-          </div>
-        </div>
+      <div class="line howto">
+        To roll dice, enter a formula like <strong>2d20+1d8+4</strong>
+        <br>For dark theme, type <b>/dark</b>
+        <br>To clear screen, type <b>/clear</b>
+        <br>We use true randomness from random.org
       </div>
     </div>
 
-    <div class="Input">
-      {* <img class="spin" src="/assets/spinner.svg"> *}
+    <div class="line input">
+      <img src="/assets/in.svg">
+      <img class="working spin" style="display: none;" src="/assets/spinner.svg">
       <form>
-        <input class="cli" rows="1" autofocus="true"></input>
+        <input type="text" autofocus="true"></input>
       </form>
     </div>
 

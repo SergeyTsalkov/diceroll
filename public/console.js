@@ -1,25 +1,27 @@
-jQuery.fn.putCursorAtEnd = function() {
-  return this.each(function() {
-    $(this).focus()
-    // If this function exists...
-    if (this.setSelectionRange) {
-      // ... then use it (Doesn't work in IE)
-      // Double the length because Opera is inconsistent about whether a carriage return is one character or two. Sigh.
-      var len = $(this).val().length * 2;
-      this.setSelectionRange(len, len);
-    } else {
-      // ... otherwise replace the contents with itself
-      // (Doesn't work in Google Chrome)
-      $(this).val($(this).val());
-    }
-    // Scroll to the bottom, in case we're in a tall textarea
-    // (Necessary for Firefox and Google Chrome)
-    this.scrollTop = 999999;
-  });
-};
+// jQuery.fn.putCursorAtEnd = function() {
+//   return this.each(function() {
+//     $(this).focus()
+//     // If this function exists...
+//     if (this.setSelectionRange) {
+//       // ... then use it (Doesn't work in IE)
+//       // Double the length because Opera is inconsistent about whether a carriage return is one character or two. Sigh.
+//       var len = $(this).val().length * 2;
+//       this.setSelectionRange(len, len);
+//     } else {
+//       // ... otherwise replace the contents with itself
+//       // (Doesn't work in Google Chrome)
+//       $(this).val($(this).val());
+//     }
+//     // Scroll to the bottom, in case we're in a tall textarea
+//     // (Necessary for Firefox and Google Chrome)
+//     this.scrollTop = 999999;
+//   });
+// };
 
 $(function() {
   var inputField = $('input')
+  var inputDiv = $('.input')
+
   var history = []
   var history_at = 0
   var history_tmp
@@ -51,11 +53,15 @@ $(function() {
     if (input == "/clear") {
       reset_input()
       return clear_screen()
+    } else if (input == "/dark") {
+      reset_input()
+      $('body').toggleClass('theme-dark')
     }
 
     $.post('/roll', {
       roll: input
     }, function(data) {
+      reset_input()
       
       if (data.error) {
         write(input, data.error, true)
@@ -70,41 +76,44 @@ $(function() {
   })
 
   var write = function(input, output, is_error) {
+    var inputIcon = $('<img>')
+    inputIcon.attr('src', '/assets/in.svg')
+
     var lineTag = $('<div>')
-    lineTag.addClass('Line')
+    lineTag.addClass('line')
 
     var inputTag = $('<div>')
-    inputTag.addClass('prompt input')
-    inputTag.text(input)
+    inputTag.addClass('subline')
+    inputTag.append(inputIcon)
+    inputTag.append(input)
     lineTag.append(inputTag)
 
     if (output) {
       var outputTag = $('<div>')
+      outputTag.addClass('subline')
 
       if (is_error) {
-        outputTag.addClass('prompt output response error')
-        var errorTag = $('<div>')
-        errorTag.addClass('type error')
-        errorTag.text(output)
-        outputTag.append(errorTag)
-        lineTag.append(outputTag)
-      } else {
-        outputTag.addClass('prompt output log')
-        outputTag.html(output)
-        lineTag.append(outputTag)
+        outputTag.addClass('error')
       }
+
+      outputTag.html(output)
+      lineTag.append(outputTag)
     }
 
     $('.console-container').append(lineTag)
-    reset_input()
   }
 
   var lock_input = function() {
+    inputDiv.find('img').hide()
+    inputDiv.find('img.working').show()
     inputField.attr('readonly', true)
     return inputField.val()
   }
 
   var reset_input = function() {
+    inputDiv.find('img').hide()
+    inputDiv.find('img').not('.working').show()
+
     history_at = 0
     inputField.val('')
     inputField.attr('readonly', false)
@@ -118,7 +127,7 @@ $(function() {
   var clear_screen = function() {
     history_at = 0
     history = []
-    $('.Line').not(':first').remove()
+    $('.line').not('.howto').not('.input').remove()
   }
 
   var add_history = function(input) {
