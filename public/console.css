@@ -227,7 +227,7 @@ body, html, #root {
 }
 
 .Line .error.output:before {
-  background-image: url(/error.svg);
+  background-image: url(/assets/error.svg);
 }
 
 .Line:hover .LineNav,

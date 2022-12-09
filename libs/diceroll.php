@@ -1,6 +1,12 @@
 <?php
 
 function diceroll($string) {
+
+  if (! preg_match('/(?:\d*d\d+|\d+)(?:\s*[+-]\s*(?:\d*d\d+|\d+))*/', $string, $match)){
+    return [];
+  }
+
+  $string = $match[0];
   $parts = preg_split('/([+-])/', $string, -1, PREG_SPLIT_DELIM_CAPTURE);
 
   // figure out which random numbers we need
