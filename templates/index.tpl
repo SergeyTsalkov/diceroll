@@ -1,7 +1,10 @@
 {include "_header.tpl"}
 
+<img class="background" src="/assets/dice.svg">
+
 <div id="root">
-  <div tabindex="-1" class="App theme-undefined">
+  <div tabindex="-1" class="App">
+
     <div class="console-container">
       <div class="Line">
         <div class="prompt output log">
@@ -12,13 +15,15 @@
           </div>
         </div>
       </div>
+    </div>
 
-    </div>
     <div class="Input">
-    <form>
-      <input class="cli" rows="1" autofocus="true"></input>
-    </form>
+      {* <img class="spin" src="/assets/spinner.svg"> *}
+      <form>
+        <input class="cli" rows="1" autofocus="true"></input>
+      </form>
     </div>
+
   </div>
 </div>
 

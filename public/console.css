@@ -3,6 +3,42 @@
           box-sizing: border-box;
 }
 
+@keyframes spin{
+  0%{
+    -webkit-transform:rotate(0deg);
+    transform:rotate(0deg);
+  }
+  to{
+    -webkit-transform:rotate(1turn);
+    transform:rotate(1turn);
+  }
+}
+
+.spin {
+    -webkit-animation-name: fa-spin;
+    animation-name: spin;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+.Input img {
+  width: 12px;
+  height: 12px;
+}
+
+img.background {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  width: 20%;
+  height: 20%;
+  opacity: 25%;
+}
+
 body, html, #root {
   height: 100%;
 }
@@ -10,16 +46,15 @@ body, html, #root {
 .App {
   outline: none;
   height: 100%;
-  font-size: 0.85rem;
+  /*font-size: 0.85rem;*/
   line-height: 1.4rem;
   font-family: "Menlo", consolas, monospace;
 }
 
 .App.top {
   padding-top: 2.6rem;
-}.ArrayType {
-
-}.Autocomplete {
+}
+.Autocomplete {
   color: #BDBDBD;
   z-index: -10;
   position: absolute;
@@ -84,48 +119,13 @@ body, html, #root {
 .theme-dark a {
   color: #c678dd;
 }
-.Filter {
-  height: 1rem;
-  display: inline-block;
-}
 
-.Filter .inner {
-  border-radius: 20px;
-  display: inline-block;
-  border: 1px solid #2196F3;
-  background: white;
-  /*overflow: hidden;*/
-  padding-right: 1rem;
-  position: relative;
-  left: 1.75rem;
-  z-index: 0;
-  line-height: 1rem;
-}
-
-.Filter.is-hidden .inner {
-  display: none;
-}
-
-.Filter.is-visible .icon {
-  opacity: .99;
-  background-color: #2196F3;
-}
-
-.Filter input {
-  font-family: "Menlo", consolas, monospace;
-  color: #333;
-  width: 8rem;
-  outline: 0;
-  border: 0;
-  background: transparent;
-  padding: .25rem .5rem;
-  font-size: .75rem;
-}
 .Input {
   display: block;
   width: 100%;
   z-index: 10;
   position: relative;
+  background-color: #eee;
 }
 
 .top .Input {
@@ -179,8 +179,6 @@ body, html, #root {
 
 .Line .input,
 .Line .output {
-  display: -ms-flexbox;
-  display: flex;
   max-width: 100%;
   position: relative;
   padding: 0.6rem;
@@ -268,16 +266,8 @@ body, html, #root {
   text-decoration: underline;
 }
 
-.ArrayType.closed {
-  cursor: pointer;
-}
-
 .Line .type.closed * em:hover {
   text-decoration: none;
-}
-
-.ArrayType.closed > div {
-  display: inline-block;
 }
 
 .group {
