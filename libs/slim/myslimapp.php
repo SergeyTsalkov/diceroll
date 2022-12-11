@@ -15,11 +15,10 @@ class MySlimApp extends \Slim\App {
       $Smarty->setTemplateDir(TEMPLATE_DIR);
       $Smarty->setCompileDir(TEMPLATE_C_DIR);
       $Smarty->addPluginsDir(LIB_DIR . '/smarty');
-      //$Smarty->addPluginsDir(COMMON_LIB_DIR . '/smarty');
       $Smarty->escape_html = true;
       $Smarty->force_compile = IS_DEVELOPMENT;
       $Smarty->compile_id = function_exists('posix_geteuid') ? posix_geteuid() : null;
-      $Smarty->registerObject('SlimContainer', $Container); // custom pathFor smarty function reads this
+      $Smarty->registerObject('SlimContainer', $Container);
       return new SmartyView($Smarty);
     };
     $Container['User'] = function($Container) {
@@ -28,12 +27,6 @@ class MySlimApp extends \Slim\App {
     $Container['errorHandler'] = function($Container) {
       return new SlimErrorHandler();
     };
-    $Container['pathFor'] = function($Container) {
-      return new pathFor($Container);
-    };
-
-    // last middleware added is the first to execute
-    $this->add('TemplateVarMiddleware');
 
     $this->get('/', 'HomeController:Home')->setName('home');
     $this->post('/roll', 'HomeController:Roll')->setName('roll');

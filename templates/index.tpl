@@ -10,7 +10,7 @@
         To roll dice, enter a formula like <strong>2d20+1d8+4</strong>
         <br>For dark theme, type <b>/dark</b>
         <br>To clear screen, type <b>/clear</b>
-        <br>We use true randomness from random.org
+        <br><a href="https://github.com/SergeyTsalkov/diceroll">We use true randomness from random.org</a>
       </div>
     </div>
 

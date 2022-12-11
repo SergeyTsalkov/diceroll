@@ -15,10 +15,6 @@ abstract class SlimObject {
     $this->Container->User->$key = $val; 
     $this->Container->view[$key] = $val;
   }
-  
-  function pathFor() {
-    return call_user_func_array($this->Container->pathFor, func_get_args());
-  }
 
   // jumps can be used from Controller or Middleware
   protected function jumpnotice(...$args) { return $this->Container->view->jumpnotice(...$args); }

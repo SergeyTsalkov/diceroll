@@ -3,19 +3,15 @@
     "smarty/smarty": "3.*",
     "slim/slim": "3.*",
     "scssphp/scssphp": "@stable",
-    "monolog/monolog": "@stable",
     "guzzlehttp/guzzle": "^7.5"
   },
   "autoload": {
     "classmap": [
       "controllers/",
-      "libs/",
-      "middleware/"
+      "libs/"
     ],
     "files": [
-      "libs/common.php",
-      "libs/diceroll.php",
-      "libs/logger.php"
+      "libs/diceroll.php"
     ]
   },
   "config": {

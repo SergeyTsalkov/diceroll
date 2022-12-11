@@ -2,10 +2,3 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule . index.php [L]
-
-ExpiresActive On
-ExpiresByType image/png "access plus 365 day"
-ExpiresByType image/jpeg "access plus 365 day"
-ExpiresByType image/svg+xml "access plus 365 day"
-ExpiresByType text/css "access plus 365 day"
-ExpiresByType application/javascript "access plus 365 day"
